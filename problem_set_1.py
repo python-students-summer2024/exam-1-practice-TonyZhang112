@@ -14,6 +14,10 @@ def bark():
   Requirements: 
     1. The proper nouns (name and breed) must be capitalized in the output, as is standard in English writing, regardless of how the user entered them.
   """
+  name=input('What is the name of your dog?').capitalize()
+  age=input('How old is he/she?')
+  breed=input('What is his/her breed?').capitalize()
+  print(f'{name}, the {age} year old {breed}, says, "Woof!"')
 
 def bark_with_validation():
   """
@@ -24,6 +28,22 @@ def bark_with_validation():
     3. If the user enters an invalid age, the string, "Age error!", must be printed and nothing else.  An invalid age is any input that is not an integer between 0 and 15, inclusive.
     4. If the user enters an invalid breed, the string, "Breed error!", must be printed and nothing else.  An invalid breed is any breed that is not in the list, ["Schnauzer", "Terrier", "Poodle", "Mastiff"]
   """
+  name=input('What is the name of your dog?').capitalize()
+  if name.isalpha() and len(name)>=2:
+    age=input('How old is he/she?')
+    if age.isnumeric() and 0<= int(age) <= 15:
+        breed=input('What is his/her breed?').capitalize()
+        if breed in ["Schnauzer", "Terrier", "Poodle", "Mastiff"]:
+          print(f'{name}, the {age} year old {breed}, says, "Woof!"')
+        else: 
+          print("Breed error!")
+          return
+    else:
+        print ("Age error!")
+        return
+  else:
+    print ('Name error!')
+    return
 
 def respond_to_anything():
   """
@@ -35,7 +55,15 @@ def respond_to_anything():
     3. If the user enters text ending in the "!" character, print the response, "Exciting!"
     4. If the user enters text that does not include a punctuation mark at the end (punctuation marks include ".", "?", and "!"), print the response, "Please include a punctuation mark at the end of your sentence!"
   """
-
+  user_input= input('Put a sentence here')
+  if user_input.endswith('.'):
+    print ("That's true.")
+  elif user_input.endswith('?'):
+    print("I'm sorry, I don't know.")
+  elif user_input.endswith('!'):
+    print("Exciting!")
+  elif not user_input.endswith((".","?","!")):
+    print("Please include a punctuation mark at the end of your sentence!")
 
 def respond_to_anything_but_nonsense():
   """
@@ -44,3 +72,14 @@ def respond_to_anything_but_nonsense():
   Requirements:
     5. If the user includes the word, 'nonsense', anywhere in the response, regardless of capitalization, do not print any output.
   """
+  user_input= input('Put a sentence here: ')
+  if 'nonsense' in user_input.lower():
+    return
+  if user_input.endswith('.'):
+    print ("That's true.")
+  elif user_input.endswith('?'):
+    print("I'm sorry, I don't know.")
+  elif user_input.endswith('!'):
+    print("Exciting!")
+  elif not user_input.endswith((".","?","!")):
+    print("Please include a punctuation mark at the end of your sentence!")

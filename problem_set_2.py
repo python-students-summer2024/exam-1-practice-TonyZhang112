@@ -18,7 +18,7 @@ def weather_helper():
         - If the user is not wearing a jacket, print the output: "What were you thinking when you left home today?!"
       - If it is not snowing, ask the user whether it is raining.
         - If it is raining, ask the user whether they have an umbrella.
-          - If the user has an umbrella, print the output: "Good job staying dry!"
+          - If the user has an umbrella, print the output: "Good job staying dry!" 
           - If the user does not have an umbrella, print the output: "You must enjoy getting wet!"
     - If the temperature is above 90, ask the user whether they have air conditioning.
       - If the user has air conditioning, print the output: "Stay cool indoors."
@@ -30,4 +30,36 @@ def weather_helper():
     2. Do not print anything more than what is requested in the instructions.
     4. The capitalization of the user's responses must not matter to the outcome of the program.
   """
+  temp=int(input('What is the current temperature in Farenheit? ').strip())
+  if not -70<=temp<=134:
+    print("Invalid temperature!")
+    return
+  if temp < 40:
+    snow_check=input('Is it snowing?')
+    snow_check=snow_check.lower()
+    if snow_check in ['yes','yeah','yup']:
+      jacket_check=input('Are you wearing a warm jacket? ')
+      jacket_check = jacket_check.lower()
+      if jacket_check in ['yes','yeah','yup']:
+        print("Glad to hear you're dressed appropriately!")
+      else:
+        print("What were you thinking when you left home today?!")
+    else:
+      rain_check=input('Is it raining? ')
+      rain_check = rain_check.lower()
+      if rain_check in ['yes','yeah','yup']:
+        umb_check=input('Do you have an umbrella? ')
+        umb_check = umb_check.lower()
+        if umb_check in ['yes','yeah','yup']:
+          print("Good job staying dry!")
+        else:
+          print ("You must enjoy getting wet!")
+  elif temp > 90:
+    ac_check= input('Do you have an AC?')
+    ac_check = ac_check.lower()
+    if ac_check in ['yes','yeah','yup']:
+      print("Stay cool indoors.")
+    else:
+      print ( "I hope you have a fan.")
+
 
